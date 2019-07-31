@@ -53,7 +53,7 @@ public class ShapeLandBiomeLayer extends BiomeLayers {
 			}
 			return centreBiome;
 		} else if (doIsland && (northBiome == OCEAN && eastBiome == OCEAN && southBiome == OCEAN && westBiome == OCEAN)) {
-			return this.nextInt(35) == 0 ? FOREST : OCEAN;
+			return this.nextInt(50) == 0 ? FOREST : OCEAN;
 		} else {
 			int chance = 1; // pick equally among all non-ocean biomes by incrementing this number after each successful non-ocean detection.
 			//                 (one non-ocean = certain, two non-oceans = pick first one (100% chance for all)

@@ -32,7 +32,7 @@ public final class AddClimateLayers {
 							return FOREST;
 						} else if (sampledBiome != OCEAN) {
 							this.localiseSeed(totalX, localZ + startZ);
-							return this.nextInt(3) == 0 ? COLD_CLIMATE : sampledBiome;
+							return this.nextInt(4) == 0 ? COLD_CLIMATE : sampledBiome;
 						} else {
 							return OCEAN;
 						}
@@ -87,17 +87,18 @@ public final class AddClimateLayers {
 		@Override
 		protected int sample(int centreBiome, int northBiome, int eastBiome, int southBiome, int westBiome) {
 			if (centreBiome == HOT_CLIMATE) {
-
 				if (northBiome == COLD_CLIMATE || eastBiome == COLD_CLIMATE || southBiome == COLD_CLIMATE || westBiome == COLD_CLIMATE) {
 					if (this.nextInt(5) == 0) {
 						return MOUNTAINS;
 					} else {
-						return this.nextInt(3) == 0 ? COOL_CLIMATE : WARM_CLIMATE;
+						return WARM_CLIMATE;
 					}
 				} else {
 					return centreBiome;
 				}
 
+			} else if (centreBiome == COLD_CLIMATE) {
+				return this.nextInt(5) == 0 ? COOL_CLIMATE : COLD_CLIMATE;
 			} else {
 				return centreBiome;
 			}

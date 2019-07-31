@@ -47,7 +47,7 @@ public class AddIslandBiomeLayer extends BiomeLayers {
 				if (basicLand) {
 					return this.nextInt(150) == 0 ? LAND : OCEAN;
 				} else {
-					return this.nextInt(150) == 0 ? Biome.lookup[this.nextInt(Biome.getBiomeCount())].getId() : OCEAN;
+					return this.nextInt(150) == 0 ? Biome.pickValidIsland(this) : OCEAN;
 				}
 			}
 		}

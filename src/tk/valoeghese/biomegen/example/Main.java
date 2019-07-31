@@ -14,6 +14,7 @@ import tk.valoeghese.biomegen.api.BiomeSampler;
 import tk.valoeghese.biomegen.example.layers.AddClimateLayers;
 import tk.valoeghese.biomegen.example.layers.AddIslandBiomeLayer;
 import tk.valoeghese.biomegen.example.layers.ContinentalBiomeLayer;
+import tk.valoeghese.biomegen.example.layers.EdgeBiomeLayer;
 import tk.valoeghese.biomegen.example.layers.InitContinentBiomeLayer;
 import tk.valoeghese.biomegen.example.layers.NoiseScaleBiomeLayer;
 import tk.valoeghese.biomegen.example.layers.RemoveOceanLakesLayer;
@@ -58,7 +59,7 @@ public class Main extends Application {
 			
 			ShapeLandBiomeLayer shapeLandBiomeLayer_2 = new ShapeLandBiomeLayer(scaleBiomeLayer_2, worldSeed, 1000L);
 			
-			return new SmoothBiomeLayer(shapeLandBiomeLayer_2, worldSeed, 1001L);
+			return new EdgeBiomeLayer(new SmoothBiomeLayer(shapeLandBiomeLayer_2, worldSeed, 200L), worldSeed, 1001L);
 		});
 		System.out.println("Launching");
 		launch(args);
@@ -67,8 +68,8 @@ public class Main extends Application {
 	@Override
 	public void start(Stage stage) {
 		// Setup
-		final double width = 1000;
-		final double height = 1000;
+		final double width = 900;
+		final double height = 900;
 
 		Pane pane = new Pane();
 

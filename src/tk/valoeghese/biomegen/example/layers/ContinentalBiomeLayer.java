@@ -11,9 +11,9 @@ public class ContinentalBiomeLayer extends BiomeLayers {
 	private static final int COOL_CLIMATE = Biome.TAIGA.getId();
 	
 	private static final int[] COLD_BIOMES = {Biome.TUNDRA.getId(), Biome.TUNDRA.getId(), Biome.TAIGA.getId()};
-	private static final int[] HOT_BIOMES = {Biome.DESERT.getId(), Biome.DESERT.getId(), Biome.SAVANNAH.getId()};
+	private static final int[] HOT_BIOMES = {Biome.DESERT.getId(), Biome.DESERT.getId(), Biome.SAVANNAH.getId(), Biome.RAINFOREST.getId()};
 	private static final int[] WARM_BIOMES = {Biome.GRASSLAND.getId(), Biome.FOREST.getId(), Biome.MOUNTAINS.getId(), Biome.SWAMP.getId()};
-	private static final int[] COOL_BIOMES = {Biome.GRASSLAND.getId(), Biome.TAIGA.getId(), Biome.MOUNTAINS.getId()};
+	private static final int[] COOL_BIOMES = {Biome.GRASSLAND.getId(), Biome.GRASSLAND.getId(), Biome.TAIGA.getId(), Biome.TAIGA.getId(), Biome.MOUNTAINS.getId(), Biome.MOUNTAINS.getId(), Biome.MARSH.getId()};
 	
 	public ContinentalBiomeLayer(BiomeLayers parent, long worldSeed, long initSeed) {
 		super(worldSeed, initSeed);
