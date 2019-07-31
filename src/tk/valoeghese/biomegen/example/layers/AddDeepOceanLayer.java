@@ -3,17 +3,14 @@ package tk.valoeghese.biomegen.example.layers;
 import tk.valoeghese.biomegen.api.gen.BiomeLayers;
 import tk.valoeghese.biomegen.example.Biome;
 
-public class AddIslandBiomeLayer extends BiomeLayers {
+public class AddDeepOceanLayer extends BiomeLayers {
 
 	private static final int OCEAN = Biome.OCEAN.getId();
-	private static final int LAND = Biome.DESERT.getId();
+	private static final int DEEP_OCEAN = Biome.DEEP_OCEAN.getId();
 	
-	private final boolean basicLand;
-	
-	public AddIslandBiomeLayer(BiomeLayers parent, long worldSeed, long initSeed, boolean justBasicLand) {
+	public AddDeepOceanLayer(BiomeLayers parent, long worldSeed, long initSeed) {
 		super(worldSeed, initSeed);
 		this.mainParent = parent;
-		this.basicLand = justBasicLand;
 	}
 
 	@Override
@@ -44,11 +41,7 @@ public class AddIslandBiomeLayer extends BiomeLayers {
 	private int sample(int centreBiome, int northBiome, int eastBiome, int southBiome, int westBiome) {
 		if (centreBiome == OCEAN) {
 			if (northBiome == OCEAN && eastBiome == OCEAN && southBiome == OCEAN && westBiome == OCEAN) {
-				if (basicLand) {
-					return this.nextInt(150) == 0 ? LAND : OCEAN;
-				} else {
-					return this.nextInt(150) == 0 ? Biome.pickValidIsland(this) : OCEAN;
-				}
+				return this.nextInt(3) == 0 ? DEEP_OCEAN : OCEAN;
 			}
 		}
 		return centreBiome;

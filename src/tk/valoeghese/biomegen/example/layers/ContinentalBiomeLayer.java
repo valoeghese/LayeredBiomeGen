@@ -1,7 +1,7 @@
 package tk.valoeghese.biomegen.example.layers;
 
+import tk.valoeghese.biomegen.api.gen.BiomeLayers;
 import tk.valoeghese.biomegen.example.Biome;
-import tk.valoeghese.biomegen.gen.BiomeLayers;
 
 public class ContinentalBiomeLayer extends BiomeLayers {
 	
@@ -14,6 +14,9 @@ public class ContinentalBiomeLayer extends BiomeLayers {
 	private static final int[] HOT_BIOMES = {Biome.DESERT.getId(), Biome.DESERT.getId(), Biome.SAVANNAH.getId(), Biome.RAINFOREST.getId()};
 	private static final int[] WARM_BIOMES = {Biome.GRASSLAND.getId(), Biome.FOREST.getId(), Biome.MOUNTAINS.getId(), Biome.SWAMP.getId()};
 	private static final int[] COOL_BIOMES = {Biome.GRASSLAND.getId(), Biome.GRASSLAND.getId(), Biome.TAIGA.getId(), Biome.TAIGA.getId(), Biome.MOUNTAINS.getId(), Biome.MOUNTAINS.getId(), Biome.MARSH.getId()};
+	
+	private static final int OCEAN = Biome.OCEAN.getId();
+	private static final int DEEP_OCEAN = Biome.DEEP_OCEAN.getId();
 	
 	public ContinentalBiomeLayer(BiomeLayers parent, long worldSeed, long initSeed) {
 		super(worldSeed, initSeed);
@@ -50,6 +53,8 @@ public class ContinentalBiomeLayer extends BiomeLayers {
 			return COOL_BIOMES[this.nextInt(COOL_BIOMES.length)];
 		} else if (centreBiome == COLD_CLIMATE) {
 			return COLD_BIOMES[this.nextInt(COLD_BIOMES.length)];
+		} else if (centreBiome == DEEP_OCEAN && this.nextInt(12) == 0) {
+			return OCEAN;
 		} else {
 			return centreBiome;
 		}

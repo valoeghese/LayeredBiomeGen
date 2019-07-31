@@ -1,8 +1,8 @@
 package tk.valoeghese.biomegen.example.layers;
 
+import tk.valoeghese.biomegen.api.gen.BiomeLayers;
 import tk.valoeghese.biomegen.example.Biome;
 import tk.valoeghese.biomegen.example.Biome.Humidity;
-import tk.valoeghese.biomegen.gen.BiomeLayers;
 
 public class EdgeBiomeLayer extends BiomeLayers {
 
@@ -12,13 +12,14 @@ public class EdgeBiomeLayer extends BiomeLayers {
 	private static final int SWAMP = Biome.SWAMP.getId();
 	private static final int MARSH = Biome.MARSH.getId();
 	private static final int OCEAN = Biome.OCEAN.getId();
+	private static final int DEEP_OCEAN = Biome.DEEP_OCEAN.getId();
 	private static final int BEACH = Biome.BEACH.getId();
 	
 	public EdgeBiomeLayer(BiomeLayers parent, long worldSeed, long initSeed) {
 		super(worldSeed, initSeed);
 		this.mainParent = parent;
 	}
-
+	
 	@Override
 	public int[] sample(int startX, int startZ, int xSize, int zSize) {
 		int[] sampledBiomes = this.mainParent.sample(startX - 1, startZ - 1, xSize + 2, zSize + 2);
@@ -49,6 +50,10 @@ public class EdgeBiomeLayer extends BiomeLayers {
 			if (northBiome == SWAMP || eastBiome == SWAMP || southBiome == SWAMP || westBiome == SWAMP ||
 					northBiome == RAINFOREST || eastBiome == RAINFOREST || southBiome == RAINFOREST || westBiome == RAINFOREST) {
 				return BEACH;
+			}
+		} else if (centreBiome == DEEP_OCEAN) {
+			if (northBiome != DEEP_OCEAN || eastBiome != DEEP_OCEAN || southBiome != DEEP_OCEAN || westBiome != DEEP_OCEAN) {
+				return OCEAN;
 			}
 		}
 		

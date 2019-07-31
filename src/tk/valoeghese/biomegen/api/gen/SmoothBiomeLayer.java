@@ -1,4 +1,4 @@
-package tk.valoeghese.biomegen.gen;
+package tk.valoeghese.biomegen.api.gen;
 
 public class SmoothBiomeLayer extends BiomeLayers {
 

@@ -1,7 +1,8 @@
 package tk.valoeghese.biomegen.api;
 
-import tk.valoeghese.biomegen.gen.BiomeLayers;
+import tk.valoeghese.biomegen.api.gen.BiomeLayers;
+import tk.valoeghese.biomegen.api.gen.WorldSettings;
 
-public interface BiomeLayerFactory {
-	public BiomeLayers build(long worldSeed);
+public interface BiomeLayerFactory<T extends WorldSettings> {
+	public BiomeLayers build(long worldSeed, T settings);
 }

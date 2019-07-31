@@ -1,4 +1,4 @@
-package tk.valoeghese.biomegen.gen;
+package tk.valoeghese.biomegen.api.gen;
 
 import tk.valoeghese.biomegen.api.BiomeLayerFactory;
 import tk.valoeghese.biomegen.api.BiomeSampler;
@@ -11,8 +11,8 @@ public abstract class BiomeLayers implements BiomeSampler {
 	
 	protected BiomeLayers mainParent = null;
 	
-	public static final BiomeLayers build(long worldSeed, BiomeLayerFactory factory) {
-		return factory.build(worldSeed);
+	public static final <T extends WorldSettings> BiomeLayers build(long worldSeed, T settings, BiomeLayerFactory<T> factory) {
+		return factory.build(worldSeed, settings);
 	}
 	
 	protected BiomeLayers(long worldSeed, long initSeed) {

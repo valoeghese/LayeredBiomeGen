@@ -1,7 +1,7 @@
 package tk.valoeghese.biomegen.example.layers;
 
+import tk.valoeghese.biomegen.api.gen.BiomeLayers;
 import tk.valoeghese.biomegen.example.Biome;
-import tk.valoeghese.biomegen.gen.BiomeLayers;
 
 public final class AddClimateLayers {
 	private static final int OCEAN = Biome.OCEAN.getId();

@@ -1,7 +1,7 @@
 package tk.valoeghese.biomegen.example.layers;
 
+import tk.valoeghese.biomegen.api.gen.BiomeLayers;
 import tk.valoeghese.biomegen.example.Biome;
-import tk.valoeghese.biomegen.gen.BiomeLayers;
 
 public class RemoveOceanLakesLayer extends BiomeLayers {
 

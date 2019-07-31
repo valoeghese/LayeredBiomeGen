@@ -1,7 +1,7 @@
 package tk.valoeghese.biomegen.example;
 
 import javafx.scene.paint.Color;
-import tk.valoeghese.biomegen.gen.BiomeLayers;
+import tk.valoeghese.biomegen.api.gen.BiomeLayers;
 
 public final class Biome {
 	private final int id;
@@ -19,8 +19,9 @@ public final class Biome {
 	public static final Biome RAINFOREST;
 	public static final Biome CHAPARRAL;
 	public static final Biome MARSH;
-	public static final Biome BEACH;
 	
+	public static final Biome BEACH;
+	public static final Biome DEEP_OCEAN;
 	public Biome(int id, Color colour, Humidity humidity) {
 		this.id = id;
 		this.colour = colour;
@@ -61,7 +62,9 @@ public final class Biome {
 		RAINFOREST = new Biome(9, Color.DARKOLIVEGREEN, Humidity.WET);
 		CHAPARRAL = new Biome(10, Color.LIMEGREEN, Humidity.STANDARD);
 		MARSH = new Biome(11, Color.VIOLET, Humidity.WET);
+		
 		BEACH = new Biome(12, Color.BEIGE, Humidity.NONE);
+		DEEP_OCEAN = new Biome(13, Color.DARKBLUE, Humidity.NONE);
 		
 		valid_islands = new int[]{DESERT.id, GRASSLAND.id, TAIGA.id, TUNDRA.id, FOREST.id, RAINFOREST.id, CHAPARRAL.id};
 	}

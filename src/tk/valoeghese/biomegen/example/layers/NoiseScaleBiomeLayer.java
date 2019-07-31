@@ -1,6 +1,6 @@
 package tk.valoeghese.biomegen.example.layers;
 
-import tk.valoeghese.biomegen.gen.BiomeLayers;
+import tk.valoeghese.biomegen.api.gen.BiomeLayers;
 
 public class NoiseScaleBiomeLayer extends BiomeLayers {
 

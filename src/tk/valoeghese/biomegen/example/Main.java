@@ -11,7 +11,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import tk.valoeghese.biomegen.api.BiomeSampler;
+import tk.valoeghese.biomegen.api.gen.BiomeLayers;
+import tk.valoeghese.biomegen.api.gen.EmptyWorldSettings;
+import tk.valoeghese.biomegen.api.gen.ScaleBiomeLayer;
+import tk.valoeghese.biomegen.api.gen.SmoothBiomeLayer;
 import tk.valoeghese.biomegen.example.layers.AddClimateLayers;
+import tk.valoeghese.biomegen.example.layers.AddDeepOceanLayer;
 import tk.valoeghese.biomegen.example.layers.AddIslandBiomeLayer;
 import tk.valoeghese.biomegen.example.layers.ContinentalBiomeLayer;
 import tk.valoeghese.biomegen.example.layers.EdgeBiomeLayer;
@@ -19,9 +24,6 @@ import tk.valoeghese.biomegen.example.layers.InitContinentBiomeLayer;
 import tk.valoeghese.biomegen.example.layers.NoiseScaleBiomeLayer;
 import tk.valoeghese.biomegen.example.layers.RemoveOceanLakesLayer;
 import tk.valoeghese.biomegen.example.layers.ShapeLandBiomeLayer;
-import tk.valoeghese.biomegen.gen.BiomeLayers;
-import tk.valoeghese.biomegen.gen.ScaleBiomeLayer;
-import tk.valoeghese.biomegen.gen.SmoothBiomeLayer;
 
 public class Main extends Application {
 
@@ -30,7 +32,7 @@ public class Main extends Application {
 
 	public static void main(String[] args) {
 		System.out.println("Creating biomeSampler");
-		biomeSampler = BiomeLayers.build(rand.nextLong(), worldSeed -> {
+		biomeSampler = BiomeLayers.build(rand.nextLong(), EmptyWorldSettings.INSTANCE, (worldSeed, settings) -> {
 			// Land stuff
 			InitContinentBiomeLayer continentLayer_1 = new InitContinentBiomeLayer(worldSeed, 1L);
 
@@ -43,7 +45,7 @@ public class Main extends Application {
 					worldSeed, 5L, false), worldSeed, 25L, false), worldSeed, 5L), worldSeed);
 
 			// Init climate, etc
-			RemoveOceanLakesLayer removeOceanLakesLayer_1 = new RemoveOceanLakesLayer(new AddClimateLayers.AddColdClimateBiomeLayer(scaleBiomeLayer_1, worldSeed, 100L), worldSeed, 101L);
+			RemoveOceanLakesLayer removeOceanLakesLayer_1 = new RemoveOceanLakesLayer(new AddClimateLayers.AddColdClimateBiomeLayer(new AddDeepOceanLayer(scaleBiomeLayer_1, worldSeed, 90L), worldSeed, 100L), worldSeed, 101L);
 
 			// Ease climate
 			SmoothBiomeLayer smoothBiomeLayer_1 = new SmoothBiomeLayer(new AddIslandBiomeLayer(new ScaleBiomeLayer(new AddClimateLayers.AddMountainRangeBiomeLayer(
