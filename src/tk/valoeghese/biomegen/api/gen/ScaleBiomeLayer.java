@@ -36,7 +36,7 @@ public final class ScaleBiomeLayer extends BiomeLayers {
 	}
 	
 	public static BiomeLayers scaleBy(BiomeLayers layer, int amount, long worldSeed) {
-		if (amount < 1) return layer;
+		if (amount < 1) return new WrapperLayer(layer, worldSeed);
 		ScaleBiomeLayer scaleLayer = new ScaleBiomeLayer(layer, worldSeed);
 		for (int i = 0; i < amount - 1; ++i) {
 			scaleLayer = new ScaleBiomeLayer(scaleLayer, worldSeed);

@@ -53,8 +53,10 @@ public class ContinentalBiomeLayer extends BiomeLayers {
 			return COOL_BIOMES[this.nextInt(COOL_BIOMES.length)];
 		} else if (centreBiome == COLD_CLIMATE) {
 			return COLD_BIOMES[this.nextInt(COLD_BIOMES.length)];
-		} else if (centreBiome == DEEP_OCEAN && this.nextInt(12) == 0) {
+		} else if (centreBiome == DEEP_OCEAN && this.nextInt(10) == 0) {
 			return OCEAN;
+		} else if (centreBiome == OCEAN && this.nextInt(5) == 0) {
+			return DEEP_OCEAN;
 		} else {
 			return centreBiome;
 		}

@@ -2,22 +2,22 @@ package tk.valoeghese.biomegen.example.layers;
 
 import tk.valoeghese.biomegen.api.gen.BiomeLayers;
 import tk.valoeghese.biomegen.example.Biome;
-import tk.valoeghese.biomegen.example.Biome.Humidity;
 
-public class EdgeBiomeLayer extends BiomeLayers {
+public class SmallEdgeBiomeLayer extends BiomeLayers {
 
 	private static final int RAINFOREST = Biome.RAINFOREST.getId();
-	private static final int MOUNTAINS = Biome.MOUNTAINS.getId();
-	private static final int MOUNTAIN_PEAKS = Biome.MOUNTAIN_PEAKS.getId();
 	private static final int CHAPARRAL = Biome.CHAPARRAL.getId();
 	private static final int SWAMP = Biome.SWAMP.getId();
 	private static final int MARSH = Biome.MARSH.getId();
-	private static final int GRASSLAND = Biome.GRASSLAND.getId();
 	private static final int OCEAN = Biome.OCEAN.getId();
 	private static final int DEEP_OCEAN = Biome.DEEP_OCEAN.getId();
-	private static final int COASTAL_DUNES = Biome.COASTAL_DUNES.getId();
+	private static final int BEACH = Biome.BEACH.getId();
+	private static final int DESERT = Biome.DESERT.getId();
+	private static final int TUNDRA = Biome.TUNDRA.getId();
+	private static final int MOUNTAINS = Biome.MOUNTAINS.getId();
+	private static final int MOUNTAIN_PEAKS = Biome.MOUNTAIN_PEAKS.getId();
 	
-	public EdgeBiomeLayer(BiomeLayers parent, long worldSeed, long initSeed) {
+	public SmallEdgeBiomeLayer(BiomeLayers parent, long worldSeed, long initSeed) {
 		super(worldSeed, initSeed);
 		this.mainParent = parent;
 	}
@@ -48,10 +48,10 @@ public class EdgeBiomeLayer extends BiomeLayers {
 	}
 
 	private int sample(int centreBiome, int northBiome, int eastBiome, int southBiome, int westBiome) {
-		if (centreBiome == OCEAN) {
-			if (northBiome == SWAMP || eastBiome == SWAMP || southBiome == SWAMP || westBiome == SWAMP ||
-					northBiome == RAINFOREST || eastBiome == RAINFOREST || southBiome == RAINFOREST || westBiome == RAINFOREST) {
-				return COASTAL_DUNES;
+		if (centreBiome != OCEAN && centreBiome != DEEP_OCEAN) {
+			if (northBiome == OCEAN || eastBiome == OCEAN || southBiome == OCEAN || westBiome == OCEAN ||
+					northBiome == DEEP_OCEAN || eastBiome == DEEP_OCEAN || southBiome == DEEP_OCEAN || westBiome == DEEP_OCEAN) {
+				return (centreBiome == DESERT || centreBiome == TUNDRA) ? centreBiome : BEACH;
 			}
 		} else if (centreBiome == DEEP_OCEAN) {
 			if (northBiome != DEEP_OCEAN || eastBiome != DEEP_OCEAN || southBiome != DEEP_OCEAN || westBiome != DEEP_OCEAN) {
@@ -59,25 +59,20 @@ public class EdgeBiomeLayer extends BiomeLayers {
 			}
 		}
 		
-		Humidity humidity = Biome.id_to_humidity[centreBiome];
-		
-		if (humidity == Humidity.DESERT) {
-			if (northBiome == RAINFOREST || eastBiome == RAINFOREST || southBiome == RAINFOREST || westBiome == RAINFOREST) {
-				return MOUNTAINS;
-			}
-		} else if (humidity == Humidity.DRY) {
-			if (northBiome == RAINFOREST || eastBiome == RAINFOREST || southBiome == RAINFOREST || westBiome == RAINFOREST) {
+		if (centreBiome == RAINFOREST) {
+			if (northBiome == MARSH || eastBiome == MARSH || southBiome == MARSH || westBiome == MARSH) {
 				return CHAPARRAL;
 			}
-		} else if (centreBiome == SWAMP) {
-			if (northBiome == MOUNTAINS || eastBiome == MOUNTAINS || southBiome == MOUNTAINS || westBiome == MOUNTAINS) {
-				return MARSH;
-			} else if (northBiome == RAINFOREST || eastBiome == RAINFOREST || southBiome == RAINFOREST || westBiome == RAINFOREST) {
-				return GRASSLAND;
+		} else if (centreBiome == DESERT) {
+			if (northBiome == SWAMP || eastBiome == SWAMP || southBiome == SWAMP || westBiome == SWAMP) {
+				return CHAPARRAL;
 			}
-		} else if (centreBiome == MOUNTAINS) {
-			if (northBiome == MOUNTAINS && eastBiome == MOUNTAINS && southBiome == MOUNTAINS && westBiome == MOUNTAINS) {
-				return this.nextInt(3) == 0 ? MOUNTAIN_PEAKS : MOUNTAINS;
+		} else if (centreBiome == MOUNTAIN_PEAKS) {
+			if (!((northBiome == MOUNTAIN_PEAKS || northBiome == MOUNTAINS) &&
+					(eastBiome == MOUNTAIN_PEAKS || eastBiome == MOUNTAINS) &&
+					(southBiome == MOUNTAIN_PEAKS || southBiome == MOUNTAINS) &&
+					(westBiome == MOUNTAIN_PEAKS || westBiome == MOUNTAINS))) {
+				return MOUNTAINS;
 			}
 		}
 

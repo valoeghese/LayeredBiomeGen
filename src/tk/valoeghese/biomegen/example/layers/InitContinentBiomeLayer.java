@@ -19,6 +19,9 @@ public class InitContinentBiomeLayer extends BiomeLayers {
 		result = forEachCoordinate(result, startX, startZ, xSize, zSize, 
 				(localX, localZ, totalX) -> {
 					int totalZ = startZ + localZ;
+					if (totalX == 0 && totalZ == 0) {
+						return LAND;
+					}
 					this.localiseSeed(totalX, totalZ);
 					return (this.nextInt(7) == 0) ? LAND : OCEAN;
 				});
