@@ -30,6 +30,7 @@ public final class Biome {
 	public static final Biome SAVANNAH_PLATEAU;
 	public static final Biome BEACH;
 	public static final Biome MONTANE_SHRUBLAND;
+	public static final Biome LAKE;
 	
 	public Biome(int id, Color colour, Humidity humidity) {
 		this(id, colour, humidity, id);
@@ -85,13 +86,14 @@ public final class Biome {
 		COASTAL_DUNES = new Biome(12, Color.GOLD, Humidity.NONE);
 		DEEP_OCEAN = new Biome(13, Color.DARKBLUE, Humidity.NONE);
 		MOUNTAIN_PEAKS = new Biome(14, Color.DARKSLATEGRAY, Humidity.NONE, MOUNTAINS.id);
-		RIVER = new Biome(15, Color.BLUE, Humidity.NONE);
+		RIVER = new Biome(15, Color.ROYALBLUE, Humidity.NONE);
 		FROZEN_RIVER = new Biome(16, Color.SKYBLUE, Humidity.NONE);
 		
 		FOREST_HILLS = new Biome(17, Color.DARKGREEN, Humidity.HUMID);
 		SAVANNAH_PLATEAU = new Biome(18, Color.LIGHTGREEN, Humidity.HUMID);
 		BEACH = new Biome(19, Color.YELLOW, Humidity.NONE);
 		MONTANE_SHRUBLAND = new Biome(20, Color.ROSYBROWN, Humidity.NONE);
+		LAKE = new Biome(21, Color.ROYALBLUE, Humidity.NONE);
 		
 		valid_islands = new int[]{DESERT.id, GRASSLAND.id, TAIGA.id, TUNDRA.id, FOREST.id, RAINFOREST.id, CHAPARRAL.id};
 	}

@@ -52,7 +52,7 @@ public class HillsBiomeLayer extends BiomeLayers {
 
 	private int sample(int centreBiome, int northBiome, int eastBiome, int southBiome, int westBiome, int noise) {
 
-		if (centreBiome != OCEAN && centreBiome != DEEP_OCEAN && noise < 5 && this.nextInt(3) == 0) {
+		if (centreBiome != OCEAN && centreBiome != DEEP_OCEAN && noise < 7 && this.nextInt(3) == 0) {
 
 			int parent = Biome.lookup[centreBiome].getParent();
 			int hills = parent;

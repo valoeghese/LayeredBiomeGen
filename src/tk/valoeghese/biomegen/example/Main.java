@@ -18,6 +18,7 @@ import tk.valoeghese.biomegen.api.gen.SmoothBiomeLayer;
 import tk.valoeghese.biomegen.example.layers.AddClimateLayers;
 import tk.valoeghese.biomegen.example.layers.AddDeepOceanLayer;
 import tk.valoeghese.biomegen.example.layers.AddIslandBiomeLayer;
+import tk.valoeghese.biomegen.example.layers.AddLakesLayer;
 import tk.valoeghese.biomegen.example.layers.AddRiverBiomeLayer;
 import tk.valoeghese.biomegen.example.layers.ContinentalBiomeLayer;
 import tk.valoeghese.biomegen.example.layers.EdgeBiomeLayer;
@@ -73,7 +74,7 @@ public class Main extends Application {
 			
 			// Biome Modification
 			BiomeLayers biomeLayer = new ScaleBiomeLayer(new EdgeBiomeLayer(smoothBiomeLayer_2, worldSeed, 200L), worldSeed);
-			biomeLayer = new HillsBiomeLayer(biomeLayer, new SimpleNoiseBiomeLayer(biomeLayer, worldSeed, 1000L), worldSeed, 1001L);
+			biomeLayer = new AddLakesLayer(new HillsBiomeLayer(biomeLayer, new SimpleNoiseBiomeLayer(biomeLayer, worldSeed, 1000L), worldSeed, 1001L), worldSeed, 1002L);
 			
 			int biomeSize = settings.biomeSize();
 			
